@@ -24,12 +24,21 @@
     </li>
 
 
-    <li class="nav-item">
-      <a class="nav-link" href="index.html">
-        <i class="fa fa-cubes menu-icon"></i>
+    <li class="nav-item d-none d-lg-block">
+      <a class="nav-link" data-toggle="collapse" href="#produk" aria-expanded="false" aria-controls="kode-akun">
+        <i class="fa fa-cubes  menu-icon"></i>
         <span class="menu-title">Produk</span>
+        <span class="badge badge-info">2</span>
       </a>
+      <div class="collapse" id="produk">
+        <ul class="nav flex-column sub-menu">
+          <li class="nav-item"> <a class="nav-link" href="{{ url('barangs')}}">Barang</a></li>
+          <li class="nav-item"> <a class="nav-link" href="{{ url('stoks')}}">Stok</a></li>
+        </ul>
+      </div>
     </li>
+
+
 
 
     <li class="nav-item d-none d-lg-block">
@@ -71,9 +80,9 @@
       </a>
       <div class="collapse" id="transaksi">
         <ul class="nav flex-column sub-menu">
-          <li class="nav-item"> <a class="nav-link" href="pages/layout/compact-menu.html">Pembelian</a></li>
-          <li class="nav-item"> <a class="nav-link" href="pages/layout/sidebar-collapsed.html">Penjualan</a></li>
-          <li class="nav-item"> <a class="nav-link" href="pages/layout/sidebar-collapsed.html">Jurnal Umum</a></li>
+          <li class="nav-item"> <a class="nav-link" href="{{url('pembelians')}}">Pembelian</a></li>
+          <li class="nav-item"> <a class="nav-link" href="{{url('penjualans')}}">Penjualan</a></li>
+          <li class="nav-item"> <a class="nav-link" href="{{url('pembelians')}}">Jurnal Umum</a></li>
         </ul>
       </div>
     </li>

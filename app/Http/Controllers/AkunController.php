@@ -92,7 +92,7 @@ class AkunController extends Controller
        'akun_nama' => 'required',
        'akun_js' => '',
        'akun_ap' => '',
-    ]);
+   ]);
 
      $akun->update($request->all());
 
