@@ -87,7 +87,7 @@
       </div>
     </li>
 
-    <li class="nav-item d-none d-lg-block">
+   <!--  <li class="nav-item d-none d-lg-block">
       <a class="nav-link" data-toggle="collapse" href="#laporan" aria-expanded="false" aria-controls="laporan">
         <i class="icon-printer menu-icon"></i>
         <span class="menu-title">Laporan</span>
@@ -115,7 +115,7 @@
           </li>
         </ul>
       </div>
-    </li>
+    </li> -->
 
   </ul>
 </nav>

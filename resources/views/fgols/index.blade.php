@@ -1,6 +1,6 @@
 @extends('layouts.template')
 @section('cssforpage')
-<link rel="stylesheet" href="{{ asset('backend/node_modules/datatables.net-bs4/css/dataTables.bootstrap4.css') }}" />
+<link rel="stylesheet" href="{{ asset('backend/nodemod/datatables.net-bs4/css/dataTables.bootstrap4.css') }}" />
 @endsection
 @section('title','Gols')
 
@@ -67,8 +67,8 @@
 @section('jsforpage')
 <script src="{{ asset('backend/js/data-table.js') }}"></script>
 
-<script src="{{ asset('backend/node_modules/datatables.net/js/jquery.dataTables.js') }}"></script>
-<script src="{{ asset('backend/node_modules/datatables.net-bs4/js/dataTables.bootstrap4.js') }}"></script>
+<script src="{{ asset('backend/nodemod/datatables.net/js/jquery.dataTables.js') }}"></script>
+<script src="{{ asset('backend/nodemod/datatables.net-bs4/js/dataTables.bootstrap4.js') }}"></script>
 @endsection
 
 

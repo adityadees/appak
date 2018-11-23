@@ -1,5 +1,5 @@
 @extends('layouts.template')
-@section('title','Tambah Sub-Golongan')
+@section('title','Tambah Pembelian')
 @section('content')
 <div class="row">
   <div class="col-lg-12">
@@ -167,8 +167,8 @@
 
 
   @section('jsforpage')
-  <script src="{{ asset('backend/node_modules/jquery-validation/dist/jquery.validate.min.js') }}"></script>
-  <script src="{{ asset('backend/node_modules/bootstrap-maxlength/bootstrap-maxlength.min.js') }}"></script>
+  <script src="{{ asset('backend/nodemod/jquery-validation/dist/jquery.validate.min.js') }}"></script>
+  <script src="{{ asset('backend/nodemod/bootstrap-maxlength/bootstrap-maxlength.min.js') }}"></script>
   <script src="{{ asset('backend/js/form-validation.js') }}"></script>
   <script src="{{ asset('backend/js/bt-maxLength.js') }}"></script>
     <script type="text/javascript">
