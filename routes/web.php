@@ -35,3 +35,5 @@ Route::get('/tes', 'TesController@index');
 Route::get('states/get/{id}', 'TesController@getStates');
 
 
+
+Route::get('/pembelians/create/json-regencies','PembelianController@ajax');

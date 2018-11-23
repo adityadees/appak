@@ -120,43 +120,25 @@
         </button>
       </div>
       <div class="modal-body">
-
+        {{ Form::open(['route' => 'pembelians.store']) }}
         <div class="col-md-12"> 
           <div class="form-group row">
             <label class="col-sm-3 col-form-label">Kode Barang</label>
             <div class="col-sm-9">
-              <select name="barang_kode" class="form-control">
-                @foreach ($varbarang as $brg)
-                <option value="{{$brg->barang_kode}}">{{ $brg->barang_kode }}</option>
+              <select class="form-control" name="provinces" id="provinces">
+                <option value="0" disable="true" selected="true">=== Select Item ===</option>
+                @foreach ($varbarang as $key => $value)
+                <option value="{{$value->barang_kode}}">{{ $value->barang_kode }}</option>
                 @endforeach
               </select>
             </div>
           </div>
         </div>
-        <div class="col-md-12"> 
-          <div class="form-group row">
-            <label class="col-sm-3 col-form-label">Nama</label>
-            <div class="col-sm-9">
-              <input type="text" class="form-control" name="barang_nama" readonly/>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-12"> 
-          <div class="form-group row">
-            <label class="col-sm-3 col-form-label">Jenis</label>
-            <div class="col-sm-9">
-              <input type="text" class="form-control" name="barang_jenis" readonly />
-            </div>
-          </div>
-        </div>
-        <div class="col-md-12"> 
-          <div class="form-group row">
-            <label class="col-sm-3 col-form-label">Harga</label>
-            <div class="col-sm-9">
-              <input type="text" class="form-control" name="barang_hbeli" readonly />
-            </div>
-          </div>
-        </div>
+
+        <div id="regencies">
+
+        </div> 
+
         <div class="col-md-12"> 
           <div class="form-group row">
             <label class="col-sm-3 col-form-label">Qty</label>
@@ -167,28 +149,43 @@
         </div>
 
 
-
-
-
-      </div>
-      <div class="modal-footer">
-        <button type="button"   class="btn btn-default"   data-dismiss="modal">Close</button>
-        <span class="pull-right">
-          <button type="button" class="btn btn-primary">
-            Add to List
-          </button>
-        </span>
+        <div class="modal-footer">
+          <button type="button"   class="btn btn-default"   data-dismiss="modal">Close</button>
+          <span class="pull-right">
+            <button type="submit" class="btn btn-primary">
+              Add to List
+            </button>
+          </span>
+        </div>
+        {{ Form::close() }}
       </div>
     </div>
   </div>
-</div>
-@endsection
+
+  @endsection
 
 
 
-@section('jsforpage')
-<script src="{{ asset('backend/node_modules/jquery-validation/dist/jquery.validate.min.js') }}"></script>
-<script src="{{ asset('backend/node_modules/bootstrap-maxlength/bootstrap-maxlength.min.js') }}"></script>
-<script src="{{ asset('backend/js/form-validation.js') }}"></script>
-<script src="{{ asset('backend/js/bt-maxLength.js') }}"></script>
-@endsection
+  @section('jsforpage')
+  <script src="{{ asset('backend/node_modules/jquery-validation/dist/jquery.validate.min.js') }}"></script>
+  <script src="{{ asset('backend/node_modules/bootstrap-maxlength/bootstrap-maxlength.min.js') }}"></script>
+  <script src="{{ asset('backend/js/form-validation.js') }}"></script>
+  <script src="{{ asset('backend/js/bt-maxLength.js') }}"></script>
+    <script type="text/javascript">
+    $('#provinces').on('change', function(e){
+      console.log(e);
+      var barang_kode = e.target.value;
+      $.get('/appak/public/pembelians/create/json-regencies?barang_kode=' + barang_kode,function(data) {
+        console.log(data);
+        $('#regencies').empty();
+        $.each(data, function(index, regenciesObj){
+          $('#regencies').append('<div class="col-md-12"><div class="form-group row"><label class="col-sm-3 col-form-label">Nama Barang</label><div class="col-sm-9"><input type="text" class="form-control" name="barang_nama" value="'+ regenciesObj.barang_nama +'" readonly ></div></div></div>');
+          $('#regencies').append('<div class="col-md-12"><div class="form-group row"><label class="col-sm-3 col-form-label">Unit</label><div class="col-sm-9"><input type="text" name="barang_jenis"  class="form-control" value="'+ regenciesObj.barang_jenis +'" readonly ></div></div></div>');
+          $('#regencies').append('<div class="col-md-12"><div class="form-group row"><label class="col-sm-3 col-form-label">Harga Barang</label><div class="col-sm-9"><input type="text" name="barang_hbeli"  class="form-control" value="'+ regenciesObj.barang_hbeli +'" readonly ></div></div></div>');
+        })
+      });
+    });
+
+
+  </script>
+  @endsection

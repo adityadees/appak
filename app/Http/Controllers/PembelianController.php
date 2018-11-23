@@ -6,6 +6,7 @@ use App\PembelianModel;
 use App\BarangModel;
 use App\SupplierModel;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Input;
 
 
 class PembelianController extends Controller
@@ -20,7 +21,7 @@ class PembelianController extends Controller
       $varpembelians = PembelianModel::all();
       return view('fpembelians.index',compact('varpembelians'))
       ->with('i');
-  }
+    }
 
     /**
      * Show the form for creating a new resource.
@@ -33,9 +34,13 @@ class PembelianController extends Controller
      $varsupplier = SupplierModel::all();
      return view('fpembelians.create',compact('varbarang','varsupplier'))
      ->with('i');
- }
+   }
 
- 
+   public function ajax(){
+    $barang_kode = Input::get('barang_kode');
+    $ajax = BarangModel::where('barang_kode', '=', $barang_kode)->get();
+    return response()->json($ajax);
+  }
 
     /**
      * Store a newly created resource in storage.
@@ -45,18 +50,18 @@ class PembelianController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-          'pembelian_kode' => 'required',
-          'pembelian_nama' => 'required',
-          'pembelian_harga' => 'required',
-          'pembelian_qty' => 'required',
-          'supplier_id' => 'required',
+      $request->validate([
+        'pembelian_kode' => 'required',
+        'pembelian_nama' => 'required',
+        'pembelian_harga' => 'required',
+        'pembelian_qty' => 'required',
+        'supplier_id' => 'required',
       ]);
 
-        PembelianModel::create($request->all());
+      PembelianModel::create($request->all());
 
-        return redirect()->route('pembelians.index')
-        ->with('success','Data berhasil ditambah');
+      return redirect()->route('pembelians.index')
+      ->with('success','Data berhasil ditambah');
     }
 
     /**
@@ -77,7 +82,7 @@ class PembelianController extends Controller
      */
     public function edit(PembelianModel $pembelianModel)
     {
-       return view('fpembelians.edit',compact('pembelian'));
+     return view('fpembelians.edit',compact('pembelian'));
    }
 
     /**
@@ -95,13 +100,13 @@ class PembelianController extends Controller
        'pembelian_harga' => 'required',
        'pembelian_qty' => 'required',
        'supplier_id' => 'required',
-   ]);
+     ]);
 
       $pembelian->update($request->all());
 
       return redirect()->route('pembelians.index')
       ->with('success','Data telah dirubah');
-  }
+    }
 
     /**
      * Remove the specified resource from storage.
@@ -111,9 +116,9 @@ class PembelianController extends Controller
      */
     public function destroy(PembelianModel $pembelianModel)
     {
-       $pembelian->delete();
+     $pembelian->delete();
 
-       return redirect()->route('pembelians.index')
-       ->with('success','Data telah dihapus');
+     return redirect()->route('pembelians.index')
+     ->with('success','Data telah dihapus');
    }
-}
+ }
