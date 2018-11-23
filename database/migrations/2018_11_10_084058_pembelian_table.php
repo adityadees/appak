@@ -14,9 +14,9 @@ class PembelianTable extends Migration
     public function up()
     {
         Schema::create('pembelians', function (Blueprint $table) {
-            $table->string('pembelian_kode','20')->primary();
+            $table->string('pembelian_kode',20)->primary();
             $table->integer('supplier_id');
-            $table->string('produk_kode','20');
+            $table->string('barang_kode',20);
             $table->integer('pembelian_qty');
             $table->integer('pembelian_total');
             $table->timestamps(); 

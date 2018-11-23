@@ -17,7 +17,7 @@
       </div>
     </li>
     <li class="nav-item">
-      <a class="nav-link" href="index.html">
+      <a class="nav-link" href="#">
         <i class="icon-home menu-icon"></i>
         <span class="menu-title">Dashboard</span>
       </a>

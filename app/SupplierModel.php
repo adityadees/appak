@@ -13,7 +13,12 @@ class SupplierModel extends Model
 		'supplier_email',
 		'supplier_alamat',
 	];
-
+	
 	protected $table = 'suppliers';
 	protected $primaryKey = 'supplier_id';
+
+	public function pembelian()
+	{
+		return $this->hasMany(PembelianModel::class, 'supplier_id', 'supplier_id');
+	}
 }

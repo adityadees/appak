@@ -19,4 +19,8 @@ class BarangModel extends Model
 	protected $table = 'barangs';
 	protected $primaryKey = 'barang_kode';
 
+	public function pembelian(){
+		return $this->hasMany(PembelianModel::class, 'barang_kode','barang_kode');
+	}
+
 }

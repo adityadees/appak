@@ -14,12 +14,12 @@ class TableBarang extends Migration
     public function up()
     {
         Schema::create('barangs', function (Blueprint $table) {
-            $table->string('produk_kode',20)->primary();
-            $table->string('produk_nama',100);
-            $table->string('produk_jenis',50);
-            $table->integer('produk_hbeli');
-            $table->integer('produk_hjual');
-            $table->integer('produk_stok');
+            $table->string('barang_kode',20)->primary();
+            $table->string('barang_nama',100);
+            $table->string('barang_jenis',50);
+            $table->integer('barang_hbeli');
+            $table->integer('barang_hjual');
+            $table->integer('barang_stok');
             $table->timestamps();
         });
     }

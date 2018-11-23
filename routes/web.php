@@ -22,7 +22,7 @@ Route::resource('kelompoks','KelompokController');
 Route::resource('akuns','AkunController');
 Route::resource('barangs','BarangController');
 Route::resource('pembelians','PembelianController');
-Route::resource('penjualans','PenjualanController');
+/*Route::resource('penjualans','PenjualanController');*/
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
