@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 23, 2018 at 03:22 AM
+-- Generation Time: Nov 24, 2018 at 01:17 AM
 -- Server version: 10.1.31-MariaDB
 -- PHP Version: 7.2.3
 
@@ -70,27 +70,6 @@ CREATE TABLE `barangs` (
 INSERT INTO `barangs` (`barang_kode`, `barang_nama`, `barang_jenis`, `barang_hbeli`, `barang_hjual`, `barang_stok`, `created_at`, `updated_at`) VALUES
 ('BRG10181125230', 'Barang 1', 'PCS', 50000, 55000, NULL, '2018-11-10 01:59:06', '2018-11-10 01:59:06'),
 ('BRG16181115326', 'Barang 12', 'PCS', 50000, 55000, NULL, '2018-11-16 15:49:30', '2018-11-16 15:49:30');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `country`
---
-
-CREATE TABLE `country` (
-  `id` int(10) UNSIGNED NOT NULL,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data for table `country`
---
-
-INSERT INTO `country` (`id`, `name`, `created_at`, `updated_at`) VALUES
-(1, 'Nigeria', '2017-06-01 19:18:05', '2017-06-15 21:18:10'),
-(2, 'America', '2017-06-04 21:41:25', '2017-05-12 05:30:14');
 
 -- --------------------------------------------------------
 
@@ -232,30 +211,6 @@ INSERT INTO `pembelians` (`pembelian_kode`, `supplier_id`, `barang_kode`, `pembe
 -- --------------------------------------------------------
 
 --
--- Table structure for table `state`
---
-
-CREATE TABLE `state` (
-  `id` int(10) UNSIGNED NOT NULL,
-  `country_id` int(10) UNSIGNED NOT NULL,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data for table `state`
---
-
-INSERT INTO `state` (`id`, `country_id`, `name`, `created_at`, `updated_at`) VALUES
-(1, 1, 'Lagos', '2017-04-10 00:16:44', '2017-09-19 05:18:28'),
-(2, 1, 'Delta', '2017-06-14 00:14:27', '2017-06-06 23:40:12'),
-(3, 2, 'Texas', '2017-06-08 04:35:34', '2017-06-19 23:15:26'),
-(4, 2, 'Carlifonia', '2017-06-07 01:14:35', '2017-06-06 23:26:26');
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `subgols`
 --
 
@@ -323,7 +278,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `password`, `role`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'admin', 'admin@admin.com', '$2y$10$YgouNyyf5ZdEp/4H2VMUDetosB8oHgWTRMgdgB.CgDT4.wLq3i9UK', 1, 'ILhxi0kQJJeULip6ja4o9AGlomUwoNk76tjRd8ojRGMxLaOi4Pej1p8AUQT7', '2018-11-07 13:59:29', '2018-11-07 13:59:29'),
+(1, 'admin', 'admin@admin.com', '$2y$10$YgouNyyf5ZdEp/4H2VMUDetosB8oHgWTRMgdgB.CgDT4.wLq3i9UK', 1, 'TWhBlxMwQLPWDF4IQazIGjRkLQUB7NXpqM3NydtuQEbtXXC7qeKrmBdeXWf2', '2018-11-07 13:59:29', '2018-11-07 13:59:29'),
 (2, 'pimpinan', 'pimpinan@pimpinan.com', '$2y$10$uwra6nFT61dNP1qsLJI4FOXUI8kA3lFjwLHGeq3rqf5uIVwsU6Jy6', 0, 'bMQv2GmnqrkuXPHCPFkDeXIKIklS2NiHRogGjAuYnZfhKF4yI5nIxQ6UDbL7', '2018-11-07 14:28:32', '2018-11-07 14:28:32'),
 (3, 'tes', 'tes@aaa.com', '$2y$10$cIP.n3fUXdgDvHFWik4Yne4yTI1de4jNCteaDPXAV51g2tLD07ayO', 0, 'jUsOq18NL5X8A11TZ82PUcDxWazIzfjGA9GtZ1yM9TO91c3pQmVCWL1iVeVg', '2018-11-07 14:29:46', '2018-11-07 14:29:46');
 
@@ -343,12 +298,6 @@ ALTER TABLE `akuns`
 --
 ALTER TABLE `barangs`
   ADD PRIMARY KEY (`barang_kode`);
-
---
--- Indexes for table `country`
---
-ALTER TABLE `country`
-  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `customers`
@@ -384,13 +333,6 @@ ALTER TABLE `pembelians`
   ADD KEY `supplier_id` (`supplier_id`);
 
 --
--- Indexes for table `state`
---
-ALTER TABLE `state`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `state_ibfk_1` (`country_id`);
-
---
 -- Indexes for table `subgols`
 --
 ALTER TABLE `subgols`
@@ -420,12 +362,6 @@ ALTER TABLE `akuns`
   MODIFY `akun_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT for table `country`
---
-ALTER TABLE `country`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
---
 -- AUTO_INCREMENT for table `customers`
 --
 ALTER TABLE `customers`
@@ -448,12 +384,6 @@ ALTER TABLE `kelompoks`
 --
 ALTER TABLE `migrations`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
-
---
--- AUTO_INCREMENT for table `state`
---
-ALTER TABLE `state`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `subgols`
@@ -495,12 +425,6 @@ ALTER TABLE `gols`
 ALTER TABLE `pembelians`
   ADD CONSTRAINT `pembelians_ibfk_1` FOREIGN KEY (`barang_kode`) REFERENCES `barangs` (`barang_kode`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `pembelians_ibfk_2` FOREIGN KEY (`supplier_id`) REFERENCES `suppliers` (`supplier_id`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Constraints for table `state`
---
-ALTER TABLE `state`
-  ADD CONSTRAINT `state_ibfk_1` FOREIGN KEY (`country_id`) REFERENCES `country` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `subgols`
