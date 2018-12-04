@@ -21,4 +21,11 @@ class AkunModel extends Model
 	{
 		return $this->belongsTo(SubgolModel::class, 'subgol_id', 'subgol_id');
 	}
+
+	public function jtemp(){
+		return $this->hasMany(JurnalTempModel::class, 'akun_id','akun_id');
+	}
+	public function jurnaldetail(){
+		return $this->hasMany(JurnalTempModel::class, 'akun_id','akun_id');
+	}
 }

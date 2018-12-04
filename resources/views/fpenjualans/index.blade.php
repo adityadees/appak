@@ -2,17 +2,17 @@
 @section('cssforpage')
 <link rel="stylesheet" href="{{ asset('backend/nodemod/datatables.net-bs4/css/dataTables.bootstrap4.css') }}" />
 @endsection
-@section('title','Pembelian')
+@section('title','Penjualan')
 
 @section('content')
 <div class="card">
   <div class="card-body">
     <h4 class="card-title">
-      Pembelian
+      Penjualan
       <div class="pull-right">
         <div class="d-flex table-responsive">
           <div class="btn-group mr-2">
-            <a class="btn btn-sm btn-info" href="{{ route('pembelians.create') }}"><i class="mdi mdi-plus-circle-outline"></i> Add Pembelian</a>
+            <a class="btn btn-sm btn-info" href="{{ route('penjualans.create') }}"><i class="mdi mdi-plus-circle-outline"></i> Add Penjualan</a>
           </div>
         </div>
       </div>
@@ -32,18 +32,18 @@
             <thead>
               <tr>
                 <th>Invoice</th>
-                <th>Supplier</th>
+                <th>Customer</th>
                 <th>Total</th>
                 <th>Tanggal</th>
               </tr>
             </thead>
             <tbody>
-              @foreach ($varpembelians as $pembelian)
+              @foreach ($varpenjualans as $penjualan)
               <tr>
-                <td><a href="{{ route('pembelians.show',$pembelian->pembelian_kode) }}">{{ $pembelian->pembelian_kode }}</a></td>
-                <td>{{ $pembelian->supplier->supplier_nama }}</td>
-                <td>{{ "Rp ".number_format($pembelian->pembelian_total) }}</td>
-                <td>{{ date('d-m-Y H:i:s',strtotime($pembelian->created_at)) }}</td>
+                <td><a href="{{ route('penjualans.show',$penjualan->penjualan_kode) }}">{{ $penjualan->penjualan_kode }}</a></td>
+                <td>{{ $penjualan->customer->customer_nama }}</td>
+                <td>{{ "Rp ".number_format($penjualan->penjualan_total) }}</td>
+                <td>{{ date('d-m-Y H:i:s',strtotime($penjualan->created_at)) }}</td>
              </tr>
              @endforeach
            </tbody>

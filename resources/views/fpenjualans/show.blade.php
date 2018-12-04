@@ -6,16 +6,16 @@
         <div class="card px-2">
             <div class="card-body">
                 <div class="container-fluid">
-                    <h3 class="text-right my-5">Invoice&nbsp;&nbsp;#{{$pembelian->pembelian_kode}}</h3>
+                    <h3 class="text-right my-5">Invoice&nbsp;&nbsp;#{{$penjualan->penjualan_kode}}</h3>
                     <hr>
                 </div>
                 <div class="container-fluid d-flex justify-content-between">
                     <div class="col-lg-3 pl-0">
-                        <p class="mt-5 mb-2"><b>Invoice Date : {{date('d M Y',strtotime($pembelian->created_at))}}</b></p>
+                        <p class="mt-5 mb-2"><b>Invoice Date : {{date('d M Y',strtotime($penjualan->created_at))}}</b></p>
                     </div>
                     <div class="col-lg-3 pr-0">
                         <p class="mt-5 mb-2 text-right"><b>Invoice to</b></p>
-                        <p class="text-right">{{$pembelian->supplier->supplier_nama}}</p>
+                        <p class="text-right">{{$penjualan->customer->customer_nama}}</p>
                     </div>
                 </div>
                 <div class="container-fluid mt-5 d-flex justify-content-center w-100">
@@ -36,16 +36,16 @@
                             <?php $total=0;?>
                             @foreach ($vardetail as $k)
                             <?php 
-                            $subtot = $k->pd_qty*$k->barang->barang_hbeli; 
+                            $subtot = $k->pd_qty*$k->barang->barang_hjual; 
                             $total +=$subtot;
                             ?>
                             <tr class="text-right">
                               <td class="text-left">{{++$i}}</td>
-                              <td class="text-left">{{$k->pembelian_kode}}</td>
+                              <td class="text-left">{{$k->penjualan_kode}}</td>
                               <td class="text-left">{{$k->barang->barang_nama}}</td>
                               <td class="text-left">{{$k->barang->barang_jenis}}</td>
                               <td class="text-left">{{$k->pd_qty}}</td>
-                              <td class="text-left">Rp. {{ number_format($k->barang->barang_hbeli) }}</td>
+                              <td class="text-left">Rp. {{ number_format($k->barang->barang_hjual) }}</td>
                               <td class="text-left">Rp. {{ number_format($subtot) }}</td>
                           </tr>
                           @endforeach

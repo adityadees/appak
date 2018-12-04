@@ -1,11 +1,11 @@
 @extends('layouts.template')
-@section('title','Tambah Pembelian')
+@section('title','Tambah Penjualan')
 @section('content')
 <div class="row">
   <div class="col-lg-12">
     <div class="card">
       <div class="card-body">
-        <h4 class="card-title">Form Pembelian</h4>
+        <h4 class="card-title">Form Penjualan</h4>
 
         @if ($errors->any())
         <div class="alert alert-danger">
@@ -18,11 +18,11 @@
         </div>
         @endif
 
-        <form action="{{ route('pembelians.store') }}" method="POST">
+        <form action="{{ route('penjualans.store') }}" method="POST">
           @csrf
 
           <?php 
-          $kd="PBL";
+          $kd="PJL";
           $tgl=date('ymd');
           $r1=rand(0,999);
           $r2=rand(0,10);
@@ -32,9 +32,9 @@
             <div class="row">
               <div class="col-md-12"> 
                 <div class="form-group row">
-                  <strong class="col-sm-3 col-form-label">Kode Pembelian</strong>
+                  <strong class="col-sm-3 col-form-label">Kode Penjualan</strong>
                   <div class="col-sm-9">
-                    <input type="text" class="form-control" name="pembelian_kode" value="{{$kode}}" readonly="" />
+                    <input type="text" class="form-control" name="penjualan_kode" value="{{$kode}}" readonly="" />
                   </div>
                 </div>
               </div>
@@ -48,11 +48,11 @@
               </div>
               <div class="col-md-12"> 
                 <div class="form-group row">
-                  <strong class="col-sm-3 col-form-label">Supplier</strong>
+                  <strong class="col-sm-3 col-form-label">Customer</strong>
                   <div class="col-sm-9">
-                    <select name="supplier_id" class="form-control">
-                      @foreach ($varsupplier as $sup)
-                      <option value="{{$sup->supplier_id}}">{{ $sup->supplier_nama }}</option>
+                    <select name="customer_id" class="form-control">
+                      @foreach ($varcustomer as $cus)
+                      <option value="{{$cus->customer_id}}">{{ $cus->customer_nama }}</option>
                       @endforeach
                     </select>
                   </div>
@@ -87,7 +87,7 @@
                     @foreach ($varcart as $cart)
                     <?php 
                     $cid++;
-                    $subtot = $cart->cart_qty*$cart->barang->barang_hbeli; 
+                    $subtot = $cart->cart_qty*$cart->barang->barang_hjual; 
                     $total +=$subtot;
                     ?>
                     <tr>
@@ -98,10 +98,10 @@
                       <td>{{ $cart->barang->barang_jenis }}</td>
                       <td>
                         <input type="hidden" name="cid[]" value="{{$cid}}">
-                        <input type="hidden" name="pembelian_qty[]" value="{{ $cart->cart_qty }}">
+                        <input type="hidden" name="penjualan_qty[]" value="{{ $cart->cart_qty }}">
                         {{ $cart->cart_qty }}
                       </td>
-                      <td>Rp. {{ number_format($cart->barang->barang_hbeli) }}</td>
+                      <td>Rp. {{ number_format($cart->barang->barang_hjual) }}</td>
                       <td>Rp. {{ number_format($subtot) }}</td>
                       <td class="text-center"><a href="{{ action('CartController@destroy', ['cart_id' => $cart->cart_id]) }}" ><i class="fa fa-trash"></i></a></td>
                     </tr>
@@ -109,7 +109,7 @@
                   </tbody>
                   <tfoot>
                     <td>Total</td>
-                    <input type="hidden" name="pembelian_total" value="{{$total}}">
+                    <input type="hidden" name="penjualan_total" value="{{$total}}">
                     <td colspan="5" style="text-align: right;">Rp. {{number_format($total)}}</td>
                   </tfoot>
                 </table>
@@ -119,7 +119,7 @@
 
             <div class="row">
               <div class="col-md-12"> 
-                <a class="btn btn-danger" href="{{ route('pembelians.index') }}"> Back</a>
+                <a class="btn btn-danger" href="{{ route('penjualans.index') }}"> Back</a>
                 <input class="btn btn-primary" type="submit" value="Submit">
               </div>
             </div>
@@ -143,7 +143,7 @@
         </button>
       </div>
       <div class="modal-body">
-        {{ Form::open(['route' => 'carts.store']) }}
+        {{ Form::open(['route' => 'cartsj.store']) }}
         <div class="col-md-12"> 
           <div class="form-group row">
             <label class="col-sm-3 col-form-label">Kode Barang</label>
@@ -199,13 +199,13 @@
   $('#barangs').on('change', function(e){
     console.log(e);
     var barang_kode = e.target.value;
-    $.get('/appak/public/pembelians/create/json-regencies?barang_kode=' + barang_kode,function(data) {
+    $.get('/appak/public/penjualans/create/json-regencies?barang_kode=' + barang_kode,function(data) {
       console.log(data);
       $('#regencies').empty();
       $.each(data, function(index, regenciesObj){
         $('#regencies').append('<div class="col-md-12"><div class="form-group row"><label class="col-sm-3 col-form-label">Nama Barang</label><div class="col-sm-9"><input type="text" class="form-control" name="barang_nama" value="'+ regenciesObj.barang_nama +'" readonly ></div></div></div>');
         $('#regencies').append('<div class="col-md-12"><div class="form-group row"><label class="col-sm-3 col-form-label">Unit</label><div class="col-sm-9"><input type="text" name="barang_jenis"  class="form-control" value="'+ regenciesObj.barang_jenis +'" readonly ></div></div></div>');
-        $('#regencies').append('<div class="col-md-12"><div class="form-group row"><label class="col-sm-3 col-form-label">Harga Barang</label><div class="col-sm-9"><input type="text" name="barang_hbeli"  class="form-control" value="'+ regenciesObj.barang_hbeli +'" readonly ></div></div></div>');
+        $('#regencies').append('<div class="col-md-12"><div class="form-group row"><label class="col-sm-3 col-form-label">Harga Barang</label><div class="col-sm-9"><input type="text" name="barang_hjual"  class="form-control" value="'+ regenciesObj.barang_hjual +'" readonly ></div></div></div>');
       })
     });
   });

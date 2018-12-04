@@ -2,17 +2,17 @@
 @section('cssforpage')
 <link rel="stylesheet" href="{{ asset('backend/nodemod/datatables.net-bs4/css/dataTables.bootstrap4.css') }}" />
 @endsection
-@section('title','Pembelian')
+@section('title','Jurnal')
 
 @section('content')
 <div class="card">
   <div class="card-body">
     <h4 class="card-title">
-      Pembelian
+      Jurnal
       <div class="pull-right">
         <div class="d-flex table-responsive">
           <div class="btn-group mr-2">
-            <a class="btn btn-sm btn-info" href="{{ route('pembelians.create') }}"><i class="mdi mdi-plus-circle-outline"></i> Add Pembelian</a>
+            <a class="btn btn-sm btn-info" href="{{ route('jurnals.create') }}"><i class="mdi mdi-plus-circle-outline"></i> Add Jurnal</a>
           </div>
         </div>
       </div>
@@ -31,27 +31,27 @@
           <table id="order-listing" class="table">
             <thead>
               <tr>
-                <th>Invoice</th>
-                <th>Supplier</th>
-                <th>Total</th>
+                <th>Kode</th>
+                <th>Deskripsi</th>
+                <th>Ref</th>
                 <th>Tanggal</th>
               </tr>
             </thead>
             <tbody>
-              @foreach ($varpembelians as $pembelian)
+              @foreach ($varjurnals as $jurnal)
               <tr>
-                <td><a href="{{ route('pembelians.show',$pembelian->pembelian_kode) }}">{{ $pembelian->pembelian_kode }}</a></td>
-                <td>{{ $pembelian->supplier->supplier_nama }}</td>
-                <td>{{ "Rp ".number_format($pembelian->pembelian_total) }}</td>
-                <td>{{ date('d-m-Y H:i:s',strtotime($pembelian->created_at)) }}</td>
-             </tr>
-             @endforeach
-           </tbody>
-         </table>                    
-       </div>
-     </div>
-   </div>
- </div>
+                <td><a href="{{ route('jurnals.show',$jurnal->jurnals_kode) }}">{{ $jurnal->jurnals_kode }}</a></td>
+                <td>{{$jurnal->jurnals_ket }}</td>
+                <td>{{$jurnal->jurnals_ref }}</td>
+                <td>{{ date('d-m-Y H:i:s',strtotime($jurnal->created_at)) }}</td>
+              </tr>
+              @endforeach
+            </tbody>
+          </table>                    
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 @endsection
 

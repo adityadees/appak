@@ -23,4 +23,12 @@ class BarangModel extends Model
 		return $this->hasMany(PembelianModel::class, 'barang_kode','barang_kode');
 	}
 
+	public function cart(){
+		return $this->hasMany(CartModel::class, 'barang_kode','barang_kode');
+	}
+
+		public function pembeliandetail(){
+		return $this->hasMany(PembelianDetailModel::class, 'barang_kode','barang_kode');
+	}
+
 }

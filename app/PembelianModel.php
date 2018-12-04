@@ -9,8 +9,6 @@ class PembelianModel extends Model
 	protected $fillable = [
 		'pembelian_kode', 
 		'supplier_id',
-		'produk_kode',
-		'pembelian_qty',
 		'pembelian_total',
 	];
 
@@ -26,4 +24,10 @@ class PembelianModel extends Model
 	{
 		return $this->belongsTo(BarangModel::class, 'barang_kode', 'barang_kode');
 	}
+
+	public function pembeliandetail()
+	{
+		return $this->hasOne(PembelianDetailModel::class, 'pembelian_kode', 'pembelian_kode');
+	}
+	
 }
