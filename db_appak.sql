@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 02, 2018 at 11:03 PM
+-- Generation Time: Dec 09, 2018 at 09:43 PM
 -- Server version: 10.1.31-MariaDB
 -- PHP Version: 7.2.3
 
@@ -241,7 +241,7 @@ CREATE TABLE `customers` (
 --
 
 INSERT INTO `customers` (`customer_id`, `customer_nama`, `customer_tel`, `customer_email`, `customer_alamat`, `created_at`, `updated_at`) VALUES
-(1, 'Adityads1', '08888', 'adityads@ymail.com', 'aa', '2018-11-07 19:21:41', '2018-11-07 19:21:41');
+(1, 'Refandra', '08888', 'refandra@ymail.com', 'aa', '2018-11-07 19:21:41', '2018-11-07 19:21:41');
 
 -- --------------------------------------------------------
 
@@ -411,7 +411,7 @@ CREATE TABLE `password_resets` (
 --
 
 INSERT INTO `password_resets` (`email`, `token`, `created_at`) VALUES
-('adityads@ymail.com', '$2y$10$hqu6jeznuKpmIFxjEJqbaujYDWUR8fs7Y1SyrpVjZEaunWxfOgVCO', '2018-11-07 14:32:51');
+('admin@admin.com', '$2y$10$hqu6jeznuKpmIFxjEJqbaujYDWUR8fs7Y1SyrpVjZEaunWxfOgVCO', '2018-11-07 14:32:51');
 
 -- --------------------------------------------------------
 
@@ -704,7 +704,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `akuns`
 --
 ALTER TABLE `akuns`
-  MODIFY `akun_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=134;
+  MODIFY `akun_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=133;
 
 --
 -- AUTO_INCREMENT for table `carts`
@@ -728,7 +728,7 @@ ALTER TABLE `gols`
 -- AUTO_INCREMENT for table `jurnals_temp`
 --
 ALTER TABLE `jurnals_temp`
-  MODIFY `jt_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `jt_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `jurnal_details`
@@ -758,7 +758,7 @@ ALTER TABLE `pembelian_details`
 -- AUTO_INCREMENT for table `penjualan_details`
 --
 ALTER TABLE `penjualan_details`
-  MODIFY `pj_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `pj_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `subgols`
